@@ -1,0 +1,111 @@
+<mat-card>
+    <mat-card-title>
+        Form Control with Angular 13
+    </mat-card-title>
+    
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="onFormSubmit(form)">
+            <table class="center">
+                <tr>
+                    <td>
+                        <mat-form-field class="demo-full-width">
+                            <mat-label>First Name</mat-label>
+                            <input matInput maxlength="15" placeholder="First Name" formControlName="firstName" />
+                            <mat-error>
+                                <span *ngIf="!form.get('firstName')?.valid && form.get('firstName')?.touched">
+                                    Please enter first name ...
+                                </span>
+                            </mat-error>
+                        </mat-form-field>
+                    </td>
+
+                    <td>
+                        <mat-form-field class="demo-full-width">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput maxlength="15" placeholder="Last Name" formControlName="lastName"/>
+                            <mat-error>
+                                <span *ngIf="!form.get('lastName')?.valid && form.get('lastName')?.touched">
+                                    Please enter last name ...
+                                </span>
+                            </mat-error>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+
+                        <mat-form-field class="demo-full-width">
+                            <mat-label>Address:</mat-label>
+                            <textarea matInput placeholder="Address" formControlName="address"
+                                    matTextareaAutosize 
+                                    matAutosizeMinRows="2" 
+                                    matAutosizeMaxRows="5"></textarea>
+                        </mat-form-field>
+                        <mat-error>
+                            <span *ngIf="!form.get('address')?.valid && form.get('address')?.touched">
+                                Please enter proper address ...
+                            </span>
+                        </mat-error>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <mat-form-field class="demo-full-width">
+                            <mat-label>Birth Date</mat-label>
+                            <input matInput formControlName="dob" [matDatepicker]="picker" placeholder="Birth Date">
+                            <mat-datepicker-toggle matSuffix [for]="picker">
+                                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker touchUi="true" #picker></mat-datepicker>
+                        </mat-form-field>
+                        <mat-error>
+                            <span *ngIf="!form.get('dob')?.valid && form.get('dob')?.touched">
+                                Please enter date of birth ...
+                            </span>
+                        </mat-error>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                            <mat-label>Gender</mat-label><br>
+                            <mat-radio-group>
+                                <mat-radio-button value="1">Male</mat-radio-button>
+                                <mat-radio-button value="2">Female</mat-radio-button>
+                            </mat-radio-group>
+                    </td>
+                    <td>
+                        <mat-form-field>
+                            <mat-label>Country</mat-label>
+                            <mat-select matNativeControl name="country" placeholder="Select your country">
+                                <mat-option value="malaysia">Malaysia</mat-option>
+                                <mat-option value="indonisia">Indonisia</mat-option>
+                                <mat-option value="japan">Japan</mat-option>
+                                <mat-option value="thailand">Thailand</mat-option>
+                                <mat-option value="srilanka">Sri Lanka</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <mat-form-field class="demo-full-width">
+                            <mat-label>Email Address</mat-label>
+                            <input matInput type="email" placeholder="Email"/>
+                            <mat-icon matSuffix>mail_outline</mat-icon>
+                        </mat-form-field>                
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="content-center">
+                        <button mat-raised-button color="primary">Submit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        
+    </mat-card-content>
+    
+</mat-card>
